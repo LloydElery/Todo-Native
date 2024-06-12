@@ -1,10 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-const HomeScreen = () => {
+const CheckedScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
-    </View>
+    <>
+      <View style={styles.container}>
+        <Text>CheckedScreen</Text>
+      </View>
+    </>
   );
 };
 
@@ -15,5 +17,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-export default HomeScreen;
+export default CheckedScreen;
