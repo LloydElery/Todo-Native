@@ -1,14 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { useLocalSearchParams, Stack } from 'expo-router';
 
-const ListID = () => {
-  const { id } = useLocalSearchParams();
-
+const SettingsScreen = () => {
   return (
     <>
       <View style={styles.container}>
-        <Stack.Screen options={{ headerTitle: `${id}` }} />
-        <Text>{id}</Text>
+        <Text>Settings</Text>
       </View>
     </>
   );
@@ -22,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListID;
+export default SettingsScreen;

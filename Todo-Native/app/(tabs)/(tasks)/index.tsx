@@ -1,10 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-const HomeScreen = () => {
+const TasksScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
-    </View>
+    <>
+      <View style={styles.container}>
+        <Text>TasksScreen</Text>
+      </View>
+    </>
   );
 };
 
@@ -16,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default TasksScreen;
