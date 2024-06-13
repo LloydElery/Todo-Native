@@ -1,5 +1,6 @@
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/styles';
+import { useSignIn, useSignUp } from '@clerk/clerk-expo';
 import { useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import {
@@ -12,6 +13,7 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 
 const LoginScreen = () => {
@@ -20,8 +22,55 @@ const LoginScreen = () => {
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
 
-  const onSignUpPress = async () => {};
-  const onLoginPress = async () => {};
+  const { signIn, isLoaded, setActive } = useSignIn();
+
+  const {
+    signUp,
+    isLoaded: signUpLoaded,
+    setActive: signUpSetActive,
+  } = useSignUp();
+
+  const onSignInPress = async () => {
+    if (!isLoaded) {
+      return;
+    }
+    setLoading(true);
+    try {
+      const completeSignIn = await signIn.create({
+        identifier: emailAddress,
+        password,
+      });
+
+      // This indicates the user is signed in
+      await setActive({ session: completeSignIn.createdSessionId });
+    } catch (err: any) {
+      Alert.alert(err.errors[0].message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const onSignUpPress = async () => {
+    if (!signUpLoaded) {
+      return;
+    }
+    setLoading(true);
+
+    try {
+      // Create the user using Clerk
+      const result = await signUp.create({
+        emailAddress,
+        password,
+      });
+
+      // The user is signed in
+      signUpSetActive({ session: result.createdSessionId });
+    } catch (err: any) {
+      alert(err.errors[0].message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -60,7 +109,7 @@ const LoginScreen = () => {
         </View>
         {type === 'login' ? (
           <TouchableOpacity
-            onPress={onLoginPress}
+            onPress={onSignInPress}
             style={[defaultStyles.btn, defaultStyles.btnPrimary]}
           >
             <Text style={defaultStyles.btnPrimaryText}>Login</Text>
