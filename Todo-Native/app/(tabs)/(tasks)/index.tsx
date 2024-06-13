@@ -1,6 +1,19 @@
-import { View, Text, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Appearance,
+  useColorScheme,
+} from 'react-native';
 
 const TasksScreen = () => {
+  let colorScheme = useColorScheme();
+
+  if (colorScheme === 'dark') {
+    console.log('Dark Theme');
+  } else {
+    console.log('Light Theme');
+  }
   return (
     <>
       <View style={styles.container}>
