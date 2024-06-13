@@ -6,6 +6,7 @@ export default function TabLayout() {
       <Tabs.Screen name='(home)' />
       <Tabs.Screen name='settings' />
       <Tabs.Screen name='(lists)' />
+      <Tabs.Screen name='(tasks)' />
     </Tabs>
   );
 }
