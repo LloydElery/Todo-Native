@@ -9,7 +9,6 @@ import { DrawerActions } from '@react-navigation/native';
 import { Link, useNavigation } from 'expo-router';
 import { Drawer } from 'expo-router/drawer';
 import {
-  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -17,10 +16,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import {
-  useSafeAreaFrame,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const CustomDrawerContent = (props: any) => {
   const { bottom, top } = useSafeAreaInsets();
