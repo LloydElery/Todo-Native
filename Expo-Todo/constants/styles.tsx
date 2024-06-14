@@ -38,4 +38,25 @@ export const defaultStyles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
+  searchSection: {
+    marginHorizontal: 16,
+    borderRadius: 10,
+    height: 34,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.input,
+  },
+  searchIcon: {
+    padding: 6,
+  },
+  input: {
+    flex: 1,
+    paddingTop: 8,
+    paddingRight: 8,
+    paddingBottom: 8,
+    paddingLeft: 0,
+    alignItems: 'center',
+    color: '#424242',
+  },
 });

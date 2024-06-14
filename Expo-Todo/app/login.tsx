@@ -31,17 +31,16 @@ const LoginScreen = () => {
   } = useSignUp();
 
   const onSignInPress = async () => {
-    if (!isLoaded) {
-      return;
-    }
+    if (!isLoaded) return;
     setLoading(true);
+
     try {
       const completeSignIn = await signIn.create({
         identifier: emailAddress,
         password,
       });
 
-      // This indicates the user is signed in
+      // User is signed in
       await setActive({ session: completeSignIn.createdSessionId });
     } catch (err: any) {
       Alert.alert(err.errors[0].message);
@@ -51,9 +50,7 @@ const LoginScreen = () => {
   };
 
   const onSignUpPress = async () => {
-    if (!signUpLoaded) {
-      return;
-    }
+    if (!signUpLoaded) return;
     setLoading(true);
 
     try {
@@ -105,6 +102,7 @@ const LoginScreen = () => {
             placeholder='Password'
             value={password}
             onChangeText={setPassword}
+            secureTextEntry
           />
         </View>
         {type === 'login' ? (

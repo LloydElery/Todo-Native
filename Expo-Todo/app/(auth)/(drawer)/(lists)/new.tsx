@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-const Auth = () => {
+const NewList = () => {
   return (
     <>
       <View style={styles.container}>
-        <Text>Auth</Text>
+        <Text>NewList</Text>
       </View>
     </>
   );
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Auth;
+export default NewList;
