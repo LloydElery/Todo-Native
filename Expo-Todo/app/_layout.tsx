@@ -1,7 +1,7 @@
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
-import { SplashScreen, Stack, useRouter, useSegments } from 'expo-router';
-import { TouchableOpacity } from 'react-native';
+import { Slot, SplashScreen, Stack, useRouter, useSegments } from 'expo-router';
+import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
@@ -52,11 +52,19 @@ const InitialLayout = () => {
     const inAuthGroup = segments[0] === '(auth)';
 
     if (isSignedIn && !inAuthGroup) {
-      router.replace('/(auth)');
+      router.replace('/(auth)/(drawer)/(lists)/new');
     } else if (!isSignedIn) {
       router.replace('/');
     }
   }, [isSignedIn]);
+
+  if (!loaded || !isLoaded) {
+    return (
+      <View style={{ flex: 1 }}>
+        <ActivityIndicator size={'large'} color={'#000'} />
+      </View>
+    );
+  }
 
   return (
     <Stack>
@@ -78,6 +86,7 @@ const InitialLayout = () => {
           ),
         }}
       />
+      <Stack.Screen name='(auth)' options={{ headerShown: false }} />
     </Stack>
   );
 };
